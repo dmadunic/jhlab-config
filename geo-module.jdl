@@ -1,0 +1,42 @@
+application {
+  config {
+    baseName geoDataService
+    applicationType microservice
+    authenticationType uaa
+    packageName com.ag04.geodata
+    cacheProvider ehcache
+    databaseType sql
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    buildTool gradle
+    skipUserManagement true
+    serviceDiscoveryType eureka
+    skipClient true
+    serverPort 8090
+    uaaBaseName "geoDataService"
+  }
+  entities Country, Currency
+  dto * with mapstruct
+  service all with serviceImpl
+}
+
+entity Country {
+	id Long
+	name String required
+    code String required maxlength(20)
+    codeA2 String required maxlength(2)
+    codeA3 String required maxlength(3)
+    flag String maxlength(255)
+    active Boolean required
+}
+
+entity Currency {
+	id Long
+	name String required
+    code String required maxlength(20)
+    numCode String required maxlength(3)
+    preferred Boolean required
+}
+
+paginate Country, Currency with pagination
+filter Country, Currency

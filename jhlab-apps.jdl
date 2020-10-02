@@ -1,0 +1,32 @@
+application {
+  config {
+    baseName jhlabUaa
+    applicationType uaa
+    packageName com.ag04.jhlab
+    cacheProvider ehcache
+    databaseType sql
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    buildTool gradle
+    serverPort 9999
+    serviceDiscoveryType eureka
+  }
+}
+
+application {
+  config {
+    baseName jhlabGateway
+    applicationType gateway
+    authenticationType uaa
+    packageName com.ag04.jhlab.gw
+    uaaBaseName "jhlabUaa"
+    cacheProvider ehcache
+    databaseType sql
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    clientFramework angularX
+    buildTool gradle
+    serverPort 8080
+    serviceDiscoveryType eureka
+  }
+}
