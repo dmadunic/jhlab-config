@@ -1,0 +1,20 @@
+application {
+  config {
+    baseName geoDataService
+    applicationType microservice
+    authenticationType uaa
+    packageName com.ag04.geodata
+    cacheProvider ehcache
+    databaseType sql
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    buildTool gradle
+    skipUserManagement true
+    serviceDiscoveryType eureka
+    skipClient true
+    serverPort 8090
+    uaaBaseName "jhlabUaa"
+  }
+  dto * with mapstruct
+  service all with serviceImpl
+}

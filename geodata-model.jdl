@@ -1,0 +1,23 @@
+entity Country {
+	id Long
+	name String required
+    code String required maxlength(20)
+    codeA2 String required maxlength(2)
+    codeA3 String required maxlength(3)
+    flag String maxlength(255)
+    active Boolean required
+}
+
+entity Currency {
+	id Long
+	name String required
+    code String required maxlength(20)
+    numCode String required maxlength(3)
+    preferred Boolean required
+}
+
+paginate Country, Currency with pagination
+filter Country, Currency
+microservice Country, Currency with geoDataService
+clientRootFolder Country, Currency with geoDataService
+
